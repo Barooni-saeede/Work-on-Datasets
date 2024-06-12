@@ -1,4 +1,7 @@
+
+
 # First, use simple sample for underestanding, Make a small dataset
+
 import csv
 data = [
     ['name','age','city'],
@@ -8,11 +11,14 @@ data = [
 
 
 # Second, build csv file which call Label
+
 with open('Labels.csv',mode='w',newline='') as file:
   writer = csv.writer(file)
   writer.writerows(data)
 
+
 # Then, check the file's made
+
 with open('Labels.csv',mode='r') as file:
   reader = csv.reader(file)
   for row in reader:
@@ -45,7 +51,9 @@ def FindLabel(filename):
     return 'Health'
   else:
     return None
+
 # Build csv file (data_labels.csv) with write command in csv
+
 image_data = [(filename, FindLabel(filename)) for filename in image_files]
 
 with open('data_labels.csv',mode='w',newline='') as file:
