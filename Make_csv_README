@@ -1,0 +1,3 @@
+Sometimes, you need to design a custom dataset for yourself.For this purpose, you first need to collect and sort the data, and then, to work with your own dataset and label them, you need to create a CSV file.
+In this case, the CSV file is created using the given input data names.
+Initially, a simple example of the overall program functionality is explained, and then the complete program is presented.
