@@ -1,0 +1,61 @@
+# First, use simple sample for underestanding, Make a small dataset
+import csv
+data = [
+    ['name','age','city'],
+    ['helen','30','miami'],
+    ['allen','36','sandigo']
+]
+
+
+# Second, build csv file which call Label
+with open('Labels.csv',mode='w',newline='') as file:
+  writer = csv.writer(file)
+  writer.writerows(data)
+
+# Then, check the file's made
+with open('Labels.csv',mode='r') as file:
+  reader = csv.reader(file)
+  for row in reader:
+    print(row)
+
+
+# Now, for working with real data
+
+import csv
+import os
+
+#import data and read it
+#in this dataset I have some picturs that they are in two group ( S & H ) and their names start with s & h
+
+image_directory = '/content/drive/MyDrive/dataset/Healthy/'
+os.chdir(image_directory)
+
+image_files = [f for f in os.listdir(image_directory) if os.path.isfile(f)]
+print(image_files)
+
+
+#make a function for finding Categories according to first letter of their names
+
+def FindLabel(filename):
+  first_letter = filename[0]
+
+  if first_letter.lower() == 's':
+    return 'Sz'
+  elif first_letter.lower() == 'h':
+    return 'Health'
+  else:
+    return None
+# Build csv file (data_labels.csv) with write command in csv
+image_data = [(filename, FindLabel(filename)) for filename in image_files]
+
+with open('data_labels.csv',mode='w',newline='') as file:
+  writer = csv.writer(file)
+  writer.writerow(['image_name','label'])
+  writer.writerows(image_data)
+
+# read the data_labels file and Check its correctness
+
+with open('data_labels.csv',mode='r') as file:
+  reader = csv.reader(file)
+  for row in reader:
+    print(row)
